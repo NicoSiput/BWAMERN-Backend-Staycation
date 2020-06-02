@@ -151,6 +151,7 @@ module.exports = {
 
     const item = await Item.findOne({ _id: idItem }, (err, a) => {
       if (err) {
+        console.log("Error : " + err.message);
         return res.status(404).json({ message: err.message });
       }
     });
