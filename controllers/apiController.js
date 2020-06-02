@@ -120,20 +120,10 @@ module.exports = {
     console.log(req.body);
 
     if (!req.file) {
-      return res.status(404).json({ message: "Image Not Found" });
+      return res.status(500).json({ message: "Image Not Found" });
     }
 
     if (
-      duration === "" ||
-      idItem === "" ||
-      bookingStartDate === "" ||
-      bookingEndDate === "" ||
-      firstName === "" ||
-      lastName === "" ||
-      emailAddress === "" ||
-      phoneNumber === "" ||
-      accountHolder === "" ||
-      bankFrom === "" ||
       duration === undefined ||
       idItem === undefined ||
       bookingStartDate === undefined ||
@@ -146,7 +136,7 @@ module.exports = {
       bankFrom === undefined
     ) {
       console.log("Field tidak lengkap !!!");
-      return res.status(404).json({ message: "Field Tidak Lengkap" });
+      return res.status(500).json({ message: "Field Tidak Lengkap" });
     }
 
     const item = await Item.findOne({ _id: idItem }, (err, a) => {
