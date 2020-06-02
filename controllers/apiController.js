@@ -107,7 +107,6 @@ module.exports = {
     const {
       idItem,
       duration,
-      price,
       bookingStartDate,
       bookingEndDate,
       firstName,
@@ -118,6 +117,8 @@ module.exports = {
       bankFrom,
     } = req.body;
 
+    console.log(req.body);
+
     if (!req.file) {
       return res.status(404).json({ message: "Image Not Found" });
     }
@@ -125,7 +126,6 @@ module.exports = {
     if (
       duration === "" ||
       idItem === "" ||
-      price === "" ||
       bookingStartDate === "" ||
       bookingEndDate === "" ||
       firstName === "" ||
@@ -136,7 +136,6 @@ module.exports = {
       bankFrom === "" ||
       duration === undefined ||
       idItem === undefined ||
-      price === undefined ||
       bookingStartDate === undefined ||
       bookingEndDate === undefined ||
       firstName === undefined ||
@@ -146,7 +145,8 @@ module.exports = {
       accountHolder === undefined ||
       bankFrom === undefined
     ) {
-      res.status(404).json({ message: "Field Tidak Lengkap" });
+      console.log("Field tidak lengkap !!!");
+      return res.status(404).json({ message: "Field Tidak Lengkap" });
     }
 
     const item = await Item.findOne({ _id: idItem }, (err, a) => {
