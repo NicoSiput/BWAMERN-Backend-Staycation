@@ -10,7 +10,7 @@
                      style="width:100%; display: block;">
 
                  <div class="row ml-2">
-                     <% if (booking.payments.status == 'Proses') { %>
+                     <% if (booking.payments.status == 'process') { %>
                      <form action="/admin/booking/<%= booking.id %>/confirmation?_method=PUT" method="POST">
                          <button type="submit" class="btn btn-success btn-sm">
                              <i class="fas fa-check"></i> Confirmation
